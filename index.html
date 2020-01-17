@@ -60,14 +60,16 @@
 			/* background-color: #2F4F4F; */
 			/* background: rgba(0, 0, 0, 0.4); */
 			left: 0%;
-			top: 38%;
+			top: 52%;
 			color: white;
-			display: none;
+			/* display: none; */
+			height: 0px;
+			overflow: hidden;
 			width: 100%;
 			z-Index: 9999;
 			/* filter: alpha(opacity=60); */
 			/*设置透明度为60%*/
-			opacity: 0.6;
+			opacity: 0.88;
 			/*非IE浏览器下设置透明度为60%*/
 			text-align: right;
 			line-height: 80px;
@@ -75,8 +77,12 @@
 			text-indent: 100px;
 		}
 	#modelIphne p{
-		margin: 0 17%;
-		color: white;
+	margin: 0 17%;
+	color: rgba(0, 0, 0, 0.8);
+	background-color: pink;
+	border: 1px solid;
+	border-radius: 1.5625rem;
+	padding: 10px 25px;
 	}
 
 		.contain {
@@ -181,6 +187,10 @@
 			cover.style.display = "block"; //显示遮罩层
 			var modelIphne = document.getElementById("modelIphne");
 			modelIphne.style.display="block";//显示弹出层
+			
+			modelIphne.style.transition = "all 1s";
+			// setTimeout(modelIphne.style.height= "274px",1000);
+			modelIphne.style.height= "400px";
 		}
 		
 		//安卓提示框
@@ -198,6 +208,33 @@
 		window.location.href='http://www.fqqy.com.cn:81/APK/FQCS.apk'
 		}
 		}
+		
+		
+		//点击遮罩层方法
+			function clckCover(){
+				//关闭遮罩层
+				document.getElementById("cover").style.display = "none";
+				
+				//关闭提示层
+				//安卓提示框
+				var modelTip = document.getElementById("modelTip");
+				//苹果提示框
+				var modelIphne = document.getElementById("modelIphne");
+				if(modelTip.style.display == "block"){
+					modelTip.style.display = "none"
+				}else{
+					// modelIphne.style.display="none"
+					modelIphne.style.transition = "all 0s";
+					modelIphne.style.height= "0px";
+					
+				}
+			}
+			
+		//window.onload(
+			//在用户点击遮罩时触发监听事件
+			document.getElementById("cover").addEventListener("click", clckCover);
+			document.getElementById("modelIphne").addEventListener("click", clckCover);
+			document.getElementById("modelTip").addEventListener("click", clckCover);
 	</script>
 
 </html>
